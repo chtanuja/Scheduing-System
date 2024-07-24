@@ -1,0 +1,30 @@
+CREATE TABLE EmployeeSchedules (
+       id INT AUTO_INCREMENT PRIMARY KEY,
+       employee_id INT,
+       schedule_id INT,
+       FOREIGN KEY (employee_id) REFERENCES Employees(id),
+       FOREIGN KEY (schedule_id) REFERENCES Schedules(id)
+     );
+
+ CREATE TABLE Schedules (
+       id INT AUTO_INCREMENT PRIMARY KEY,
+       admin_id INT,
+       schedule_date DATETIME,
+       comment VARCHAR(200),
+       FOREIGN KEY (admin_id) REFERENCES AdminUsers(id)
+     );
+
+CREATE TABLE Employees (
+       id INT AUTO_INCREMENT PRIMARY KEY,
+       name VARCHAR(255) NOT NULL,
+       email VARCHAR(255) NOT NULL,
+       admin_id INT,
+       FOREIGN KEY (admin_id) REFERENCES AdminUsers(id)
+ );
+
+  CREATE TABLE AdminUsers (
+       id INT AUTO_INCREMENT PRIMARY KEY,
+       username VARCHAR(255) NOT NULL,
+       password VARCHAR(255) NOT NULL,
+       email VARCHAR(255) NOT NULL
+     );
